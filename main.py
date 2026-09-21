@@ -52,9 +52,14 @@ def calculateEmploymentIncomeTax(grossSalary, InssDeductionPercentage):
     return annualIr / 12
 
 
-def calculateNetSalary(grossSalary, totalDeductions):
+def calculateNetSalary(grossSalary, baseDeductionPercentage, InssDeductionPercentage):
+    basicDeduction = calculateBasicDeduction(grossSalary, baseDeductionPercentage)
+    inssDeduction = calculateInssDeduction(grossSalary, InssDeductionPercentage)
+    irDeduction = calculateEmploymentIncomeTax(grossSalary, InssDeductionPercentage)
+    totalDeductions = basicDeduction + inssDeduction + irDeduction
+
     netSalary = grossSalary - totalDeductions
-    return netSalary
+    return netSalary, basicDeduction, inssDeduction, irDeduction, totalDeductions
 
 
 def calculateNIO_USD(netSalary):
@@ -91,12 +96,9 @@ def main():
 
     employeeName, grossSalary = readEmployeeData()
 
-    basicDeduction = calculateBasicDeduction(grossSalary, baseDeductionPercentage)
-    inssDeduction = calculateInssDeduction(grossSalary, InssDeductionPercentage)
-    irDeduction = calculateEmploymentIncomeTax(grossSalary, InssDeductionPercentage)
-
-    totalDeductions = basicDeduction + inssDeduction + irDeduction
-    netSalary = calculateNetSalary(grossSalary, totalDeductions)
+    netSalary, basicDeduction, inssDeduction, irDeduction, totalDeductions = calculateNetSalary(
+        grossSalary, baseDeductionPercentage, InssDeductionPercentage
+    )
     salaryUSD = calculateNIO_USD(netSalary)
 
     showEmployeeNetSalary(employeeName, grossSalary, basicDeduction, inssDeduction, irDeduction, totalDeductions, netSalary, salaryUSD)
