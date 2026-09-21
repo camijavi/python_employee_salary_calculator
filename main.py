@@ -63,13 +63,20 @@ def calculateNIO_USD(netSalary):
     return salaryUSD
 
 
-def showEmployeeNetSalary(employeeName, grossSalary, totalDeductions, netSalaryNIO, netSalaryUSD):
-    deductionPercentage = (totalDeductions / grossSalary) * 100
+def showEmployeeNetSalary(employeeName, grossSalary, basicDeduction, inssDeduction, irDeduction, totalDeductions, netSalaryNIO, netSalaryUSD):
+    basicPercentage = (basicDeduction / grossSalary * 100) if grossSalary > 0 else 0
+    inssPercentage = (inssDeduction / grossSalary * 100) if grossSalary > 0 else 0
+    irPercentage = (irDeduction / grossSalary * 100) if grossSalary > 0 else 0
+    totalDeductionPercentage = (totalDeductions / grossSalary * 100) if grossSalary > 0 else 0
 
     print("\n----------------------------------------")
     print(f"Nombre del colaborador: {employeeName}")
     print(f"Salario básico: C$ {grossSalary:.2f}")
-    print(f"Total deducciones: {deductionPercentage:.2f}% (-C$ {totalDeductions:.2f})")
+    print("Deducciones:")
+    print(f"  - Deducción básica: {basicPercentage:.2f}% (-C$ {basicDeduction:.2f})")
+    print(f"  - INSS: {inssPercentage:.2f}% (-C$ {inssDeduction:.2f})")
+    print(f"  - IR: {irPercentage:.2f}% (-C$ {irDeduction:.2f})")
+    print(f"Total deducciones: {totalDeductionPercentage:.2f}% (-C$ {totalDeductions:.2f})")
     print(f"Salario neto (C$): C$ {netSalaryNIO:.2f}")
     print(f"Salario neto (USD): ${netSalaryUSD:.2f}")
     print("----------------------------------------\n")
@@ -92,7 +99,7 @@ def main():
     netSalary = calculateNetSalary(grossSalary, totalDeductions)
     salaryUSD = calculateNIO_USD(netSalary)
 
-    showEmployeeNetSalary(employeeName, grossSalary, totalDeductions, netSalary, salaryUSD)
+    showEmployeeNetSalary(employeeName, grossSalary, basicDeduction, inssDeduction, irDeduction, totalDeductions, netSalary, salaryUSD)
 
 
 if __name__ == "__main__":
