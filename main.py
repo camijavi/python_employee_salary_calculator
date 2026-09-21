@@ -8,17 +8,15 @@ def readEmployeeData():
     return employeeData, grossSalary
 
 def calculateBasicDeduction(grossSalary):
-    basicDeductionPercentage = 0.10
-
-    return 
+    return grossSalary * 0.10
 
 def calculateSocialSecurityContribution(grossSalary):
-    socialSecurityContributionPercentage = 0.07
-
-    return grossSalary
+    return grossSalary * 0.07
 
 def calculateEmploymentIncomeTax(grossSalary):
-    employementIncomeTaxPercentage = 0.0
+    annualTaxableIncome = grossSalary * 12
+
+    
 
     return grossSalary
 
