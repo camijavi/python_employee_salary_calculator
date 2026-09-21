@@ -23,11 +23,13 @@ def readEmployeeData():
 
 
 def calculateBasicDeduction(grossSalary, baseDeductionPercentage):
-    return grossSalary * baseDeductionPercentage
+    basicDeduction = grossSalary * baseDeductionPercentage
+    return basicDeduction
 
 
 def calculateInssDeduction(grossSalary, InssDeductionPercentage):
-    return grossSalary * InssDeductionPercentage
+    inssDeduction = grossSalary * InssDeductionPercentage
+    return inssDeduction
 
 
 def calculateEmploymentIncomeTax(grossSalary, InssDeductionPercentage):
@@ -49,7 +51,8 @@ def calculateEmploymentIncomeTax(grossSalary, InssDeductionPercentage):
         case income:
             annualIr = 82500 + (income - 500000) * 0.30
 
-    return annualIr / 12
+    employmentIncomeTax = annualIr / 12
+    return employmentIncomeTax
 
 
 def calculateNetSalary(grossSalary, baseDeductionPercentage, InssDeductionPercentage):
