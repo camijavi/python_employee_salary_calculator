@@ -3,34 +3,40 @@ from components import clearConsole, printError,printSucess, printWarning
 
 def readEmployeeData():
     employeeData = input("Nombre del colaborador: ")
-    basicSalary = float(input("Salario básico: "))
+    grossSalary = float(input("Salario básico: "))
 
-    return employeeData, basicSalary
+    return employeeData, grossSalary
 
-def calculateBasicDeduction(basicSalary):
+def calculateBasicDeduction(grossSalary):
     basicDeductionPercentage = 0.10
 
     return 
 
-def calculateSocialSecurityContribution(basicSalary):
-    socialSecurityContributionPercentage = 0.
+def calculateSocialSecurityContribution(grossSalary):
+    socialSecurityContributionPercentage = 0.07
 
-    return basicSalary
+    return grossSalary
 
-def calculateEmploymentIncomeTax(basicSalary):
+def calculateEmploymentIncomeTax(grossSalary):
     employementIncomeTaxPercentage = 0.0
 
-    return basicSalary
+    return grossSalary
 
 
-def calculateNIO_USD():
+
+
+
+
+def calculateNetSalary(grossSalary):
+    
+    
+    return netSalary
+
+
+def calculateNIO_USD(netSalary):
     exchangeRateNIO = 36.76
 
-
-
-
-def calculateNetSalary(basicSalary):
-    return "hello"
+    return salaryUSD
 
 
 
@@ -42,6 +48,10 @@ def showEmployeeNetSalary():
 def main ():
     clearConsole
     printSucess("CALCULADORA DE SALARIOS DE COLABORADORES")
+
+    print(readEmployeeData)
+
+    
 
 if __name__ == "__main__":
     main()
